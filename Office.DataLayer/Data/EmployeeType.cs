@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace OfficingEdge.Data
+namespace Office.DataLayer.Data
 {
     public partial class EmployeeType
     {
@@ -12,6 +12,7 @@ namespace OfficingEdge.Data
 
         public int EmpTypeId { get; set; }
         public string? Title { get; set; }
+        public string? Description { get; set; }
 
         public virtual ICollection<Employee> Employees { get; set; }
     }

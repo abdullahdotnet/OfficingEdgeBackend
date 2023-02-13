@@ -1,6 +1,12 @@
+using CollectCoRepositry.Implementations.Email;
 using Microsoft.EntityFrameworkCore;
-using OfficingEdge.Data;
+using Office.DataLayer.Data;
+using OfficeRepositary.Interfaces;
+using OfficeRepositary.Repositaries;
+using OfficeServices.Email;
+using OfficeServices.Log;
 using Serilog;
+using Serilog.Core;
 using Serilog.Events;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,17 +26,15 @@ builder.Services.AddCors(o =>
 	.AllowAnyMethod()
 	.AllowAnyHeader());
 });
+builder.Services.AddScoped<IAdminRepo, AdminRepo>();
+builder.Services.AddScoped<IMailService, MailService>();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<officeContext>(options =>
 	options.UseMySQL(connectionString));
-Log.Logger = new LoggerConfiguration().WriteTo.File
-	(
-		path: "logs\\logs-.txt",
-		outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.ff zzz} [{Level:u3}] {Message:1j}{NewLine}{Exception}",
-		rollingInterval: RollingInterval.Day,
-		restrictedToMinimumLevel: LogEventLevel.Information
 
-	).CreateLogger();
+builder.Services.AddLogging(loggingBuilder =>
+				loggingBuilder.AddSerilog(dispose: true));
+builder.Services.AddScoped<ILogService, LogService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

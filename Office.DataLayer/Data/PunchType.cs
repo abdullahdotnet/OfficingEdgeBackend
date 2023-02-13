@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace OfficingEdge.Data
+namespace Office.DataLayer.Data
 {
     public partial class PunchType
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace OfficingEdge.Data
+namespace Office.DataLayer.Data
 {
     public partial class Employee
     {
@@ -18,6 +18,7 @@ namespace OfficingEdge.Data
         public string? EmpFirstName { get; set; }
         public string? EmpLastName { get; set; }
         public string? EmpEmail { get; set; }
+        public string? EmpPassword { get; set; }
         public string? EmpPhoneNo { get; set; }
         public string? ManagerId { get; set; }
         public DateTime? HireDate { get; set; }

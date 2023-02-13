@@ -1,6 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using OfficingEdge.Data;
-
 namespace OfficingEdge.Controllers
 {
 	[ApiController]
@@ -13,13 +11,12 @@ namespace OfficingEdge.Controllers
 	};
 
 		private readonly ILogger<WeatherForecastController> _logger;
-		private readonly officeContext _db;
 
 		
 
-		public WeatherForecastController(ILogger<WeatherForecastController> logger, officeContext db)
+		public WeatherForecastController(ILogger<WeatherForecastController> logger)
 		{
-			_db = db;
+
 			_logger = logger;
 		}
 

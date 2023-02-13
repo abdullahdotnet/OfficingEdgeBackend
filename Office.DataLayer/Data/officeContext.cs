@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace OfficingEdge.Data
+namespace Office.DataLayer.Data
 {
     public partial class officeContext : DbContext
     {
@@ -33,7 +33,7 @@ namespace OfficingEdge.Data
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseMySQL("server=localhost;port=3306;user=root;password=root;database=office;");
+                optionsBuilder.UseMySQL("Server=localhost;Port=3306;User=root;Password=root;Database=office");
             }
         }
 
@@ -128,6 +128,10 @@ namespace OfficingEdge.Data
                     .HasMaxLength(45)
                     .HasColumnName("emp_last_name");
 
+                entity.Property(e => e.EmpPassword)
+                    .HasMaxLength(45)
+                    .HasColumnName("emp_password");
+
                 entity.Property(e => e.EmpPhoneNo)
                     .HasMaxLength(45)
                     .HasColumnName("emp_phone_no");
@@ -163,6 +167,10 @@ namespace OfficingEdge.Data
                 entity.ToTable("employee_type");
 
                 entity.Property(e => e.EmpTypeId).HasColumnName("emp_type_id");
+
+                entity.Property(e => e.Description)
+                    .HasMaxLength(500)
+                    .HasColumnName("description");
 
                 entity.Property(e => e.Title)
                     .HasMaxLength(45)
