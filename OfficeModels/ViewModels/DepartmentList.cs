@@ -13,5 +13,5 @@ namespace OfficeModels.ViewModels
 		public IEnumerable<Department> departmentList { get; set; }
 
 	}
-	
+
 }

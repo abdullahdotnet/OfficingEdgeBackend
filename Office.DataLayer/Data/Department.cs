@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Office.DataLayer.Data
 {
-    public partial class Department 
+    public partial class Department
     {
         public Department()
         {

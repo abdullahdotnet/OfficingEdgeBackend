@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace OfficingEdge.Controllers
 {
-	[Route("api/[controller]")]
 	[ApiController]
+	[Route("/")]
 	public class AuthController : ControllerBase
 	{
 

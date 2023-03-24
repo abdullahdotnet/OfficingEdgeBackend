@@ -1,18 +1,15 @@
 ﻿using CollectCoModels.Response;
 using CollectCoRepositry.Controllers;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Office.DataLayer.Data;
-using OfficeModels.Responses;
 using OfficeModels.ViewModels;
 using OfficeRepositary.Interfaces;
 using OfficeServices.Log;
-using System.Net;
 
 namespace OfficingEdge.Controllers
 {
-	[Route("api/[controller]")]
 	[ApiController]
+	[Route("/")]
+
 	public class AdminController : BaseController
 	{
 		private readonly IAdminRepo _admin;
@@ -26,10 +23,10 @@ namespace OfficingEdge.Controllers
 		public async Task<ActionResult<ResponseDto>> AddEmployee(NewEmployee user)
 		{
 
-			
+
 			var response = await _admin.AddEmployee(user);
 			return GetResponse(response);
-			
+
 		}
 		[HttpGet("GetDepartmentList")]
 		[ProducesResponseType(typeof(DepartmentList), StatusCodes.Status200OK)]
@@ -38,7 +35,7 @@ namespace OfficingEdge.Controllers
 
 			var response = await _admin.GetDepartmentList();
 			return GetResponse(response);
-			
+
 		}
 		[HttpDelete("DeleteEmployee/{emp_id}")]
 		public async Task<ActionResult<ResponseDto>> DeleteEmployee(int emp_id)
@@ -46,6 +43,6 @@ namespace OfficingEdge.Controllers
 			var response = await _admin.DeleteEmployee(emp_id);
 			return GetResponse(response);
 		}
-		
+
 	}
 }

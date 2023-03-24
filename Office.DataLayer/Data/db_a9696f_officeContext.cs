@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Office.DataLayer.Data
 {
-    public partial class officeContext : DbContext
+    public partial class db_a9696f_officeContext : DbContext
     {
-        public officeContext()
+        public db_a9696f_officeContext()
         {
         }
 
-        public officeContext(DbContextOptions<officeContext> options)
+        public db_a9696f_officeContext(DbContextOptions<db_a9696f_officeContext> options)
             : base(options)
         {
         }
@@ -33,7 +33,7 @@ namespace Office.DataLayer.Data
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseMySQL("Server=localhost;Port=3306;User=root;Password=root;Database=office");
+                optionsBuilder.UseMySQL("Server=mysql8003.site4now.net;Port=3306;User=a9696f_office;Password=zubair@123;Database=db_a9696f_office");
             }
         }
 

@@ -19,10 +19,10 @@ namespace OfficeRepositary.Repositaries
 {
 	public class AdminRepo : IAdminRepo
 	{
-		private readonly officeContext _db;
+		private readonly db_a9696f_officeContext _db;
 		private readonly ILogger<AdminRepo> _logger;
 		private readonly IMailService _mailService;
-		public AdminRepo(officeContext db, ILogger<AdminRepo> logger, IMailService mailService)
+		public AdminRepo(db_a9696f_officeContext db, ILogger<AdminRepo> logger, IMailService mailService)
 		{
 			_db = db;
 			_logger = logger;
@@ -37,15 +37,15 @@ namespace OfficeRepositary.Repositaries
 				newDep.Name = dep.Name;
 				newDep.Description = dep.Description;
 				await _db.Departments.AddAsync(newDep);
-				return new Response { Message = "Department is successfully added"};
+				return new Response { Message = "Department is successfully added" };
 			}
-			catch(Exception ex)
+			catch (Exception ex)
 			{
 				_logger.LogError($"Exception occured in AddDepartment Api\n{ex.Message}");
 				throw;
 			}
-			
-			
+
+
 		}
 
 		public async Task<Response> AddEmployee(NewEmployee user)
@@ -72,17 +72,19 @@ namespace OfficeRepositary.Repositaries
 				employee.EmpTypeId = user.type;
 				employee.HireDate = DateTime.Now.Date;
 				await _db.Employees.AddAsync(employee);
-				 _db.SaveChanges();
+				_db.SaveChanges();
 				await _mailService.SendMailAsync(user.email, "Officing Edge Credentials", $"Email: {user.email}\nPassword: {employee.EmpPassword}");
 				return new Response { Message = "Employee is successfully added" }; ;
 
 			}
-			catch(Exception ex)
+			catch (Exception ex)
 			{
 				_logger.LogError($"Exception occured in AddEmployee Api\n{ex.Message}");
-				return new Response { 
-					StatusCode = System.Net.HttpStatusCode.BadRequest, 
-					ErrorMessages = new List<string>{ "Failed to send email", ex.Message.ToString() } };
+				return new Response
+				{
+					StatusCode = System.Net.HttpStatusCode.BadRequest,
+					ErrorMessages = new List<string> { "Failed to send email", ex.Message.ToString() }
+				};
 			}
 
 		}
@@ -96,12 +98,12 @@ namespace OfficeRepositary.Repositaries
 				return list;
 
 			}
-			catch(Exception ex)
+			catch (Exception ex)
 			{
 				_logger.LogError($"Exception occured in GetDepartmentList Api\n{ex.Message}");
 				throw;
 			}
-			
+
 		}
 		public async Task<IEnumerable<EmployeeType>> GetEmployeeTypesList()
 		{
@@ -109,12 +111,12 @@ namespace OfficeRepositary.Repositaries
 			{
 				return await _db.EmployeeTypes.ToListAsync();
 			}
-			catch(Exception ex)
+			catch (Exception ex)
 			{
 				_logger.LogError($"Exception occured in GetEmployeeTypesList Api\n{ex.Message}");
 				throw;
 			}
-			
+
 		}
 		public async Task<Response> DeleteEmployee(int id)
 		{
@@ -130,16 +132,16 @@ namespace OfficeRepositary.Repositaries
 				}
 				else
 				{
-					return new Response { Message = "Employee not found"};
+					return new Response { Message = "Employee not found" };
 				}
 			}
-			catch(Exception ex)
+			catch (Exception ex)
 			{
 				_logger.LogError($"Failed to delete employee\n{ex.Message}");
-				return new Response { ErrorMessages = new List<string>{ "failed to delete employee", ex.Message } };
-				
+				return new Response { ErrorMessages = new List<string> { "failed to delete employee", ex.Message } };
+
 			}
-			
+
 		}
 
 		public Task<Response> UpdateEmployee(int id)
