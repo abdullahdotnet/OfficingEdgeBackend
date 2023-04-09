@@ -15,9 +15,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccessLayer", "DataAcce
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OfficeServices", "OfficeServices\OfficeServices.csproj", "{136970DB-DAA8-4C3D-9651-D7B5381351BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OfficeRepositary", "OfficeRepositary\OfficeRepositary.csproj", "{834E1A35-2454-4523-A6FE-811B0C4A86E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OfficeRepositary", "OfficeRepositary\OfficeRepositary.csproj", "{834E1A35-2454-4523-A6FE-811B0C4A86E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Office.DataLayer", "Office.DataLayer\Office.DataLayer.csproj", "{DF7CC926-2414-4C55-9F12-3E19B299019B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Office.DataLayer", "Office.DataLayer\Office.DataLayer.csproj", "{DF7CC926-2414-4C55-9F12-3E19B299019B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OfficeEnums", "OfficeEnums\OfficeEnums.csproj", "{4A45252C-201D-45F0-9C92-3CC1E3F7BDED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{DF7CC926-2414-4C55-9F12-3E19B299019B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF7CC926-2414-4C55-9F12-3E19B299019B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF7CC926-2414-4C55-9F12-3E19B299019B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A45252C-201D-45F0-9C92-3CC1E3F7BDED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A45252C-201D-45F0-9C92-3CC1E3F7BDED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A45252C-201D-45F0-9C92-3CC1E3F7BDED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A45252C-201D-45F0-9C92-3CC1E3F7BDED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +61,7 @@ Global
 		{136970DB-DAA8-4C3D-9651-D7B5381351BF} = {7E322164-ED52-48B5-B730-F0C669C86E6A}
 		{834E1A35-2454-4523-A6FE-811B0C4A86E1} = {7E322164-ED52-48B5-B730-F0C669C86E6A}
 		{DF7CC926-2414-4C55-9F12-3E19B299019B} = {2FC0D309-E1D1-4FE7-BE0B-74CAC7E570D1}
+		{4A45252C-201D-45F0-9C92-3CC1E3F7BDED} = {7E322164-ED52-48B5-B730-F0C669C86E6A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F50B3CC4-BD18-4CF6-9A28-913B308F08A3}

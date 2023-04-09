@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -7,7 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+    <PackageReference Include="IdentityModel" Version="6.0.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.27.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Office.DataLayer\Office.DataLayer.csproj" />
+    <ProjectReference Include="..\OfficeEnums\OfficeEnums.csproj" />
     <ProjectReference Include="..\OfficeModels\OfficeModels.csproj" />
     <ProjectReference Include="..\OfficeServices\OfficeServices.csproj" />
   </ItemGroup>

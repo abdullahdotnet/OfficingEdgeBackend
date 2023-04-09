@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Office.DataLayer.Data
+namespace Office.DataLayer.data
 {
     public partial class Employee
     {
@@ -11,7 +11,6 @@ namespace Office.DataLayer.Data
             Leaves = new HashSet<Leave>();
             MissingPunches = new HashSet<MissingPunch>();
             Presents = new HashSet<Present>();
-            Punches = new HashSet<Punch>();
         }
 
         public int EmpId { get; set; }
@@ -31,6 +30,5 @@ namespace Office.DataLayer.Data
         public virtual ICollection<Leave> Leaves { get; set; }
         public virtual ICollection<MissingPunch> MissingPunches { get; set; }
         public virtual ICollection<Present> Presents { get; set; }
-        public virtual ICollection<Punch> Punches { get; set; }
     }
 }

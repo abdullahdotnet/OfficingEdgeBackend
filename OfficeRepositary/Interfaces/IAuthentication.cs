@@ -1,10 +1,12 @@
-﻿using OfficeModels.Requests;
+﻿using OfficeModels.Request;
+using OfficeModels.Requests;
 using OfficeModels.Responses;
 
-namespace OfficingEdge.Interfaces
+namespace OfficeRepositary.Interfaces
 {
 	public interface IAuthentication
 	{
 		Task<LoginResponse> LoginAsync(LoginRequest loginRequest);
+		Task<RegisterUserResponse> RegisterUserAsync(RegisterUserRequest registerUserRequest);
 	}
 }

@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Office.DataLayer\Office.DataLayer.csproj" />
+    <ProjectReference Include="..\OfficeEnums\OfficeEnums.csproj" />
   </ItemGroup>
 
 </Project>

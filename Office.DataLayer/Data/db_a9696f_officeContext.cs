@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Office.DataLayer.Identity;
 
-namespace Office.DataLayer.Data
+namespace Office.DataLayer.data
 {
-    public partial class db_a9696f_officeContext : DbContext
+    public partial class db_a9696f_officeContext : IdentityDbContext<ApplicationUser>
     {
         public db_a9696f_officeContext()
         {
@@ -39,6 +41,7 @@ namespace Office.DataLayer.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Absent>(entity =>
             {
                 entity.HasKey(e => e.AbId)
@@ -69,8 +72,6 @@ namespace Office.DataLayer.Data
                     .HasName("PRIMARY");
 
                 entity.ToTable("department");
-
-                entity.HasComment("	");
 
                 entity.Property(e => e.DepId).HasColumnName("dep_id");
 
@@ -184,8 +185,6 @@ namespace Office.DataLayer.Data
 
                 entity.ToTable("leave");
 
-                entity.HasComment("		");
-
                 entity.HasIndex(e => e.LeEmpId, "fk_leave_employees1_idx");
 
                 entity.Property(e => e.LeId).HasColumnName("le_id");
@@ -288,16 +287,14 @@ namespace Office.DataLayer.Data
 
                 entity.ToTable("punches");
 
-                entity.HasIndex(e => e.EmployeesEmpId, "fk_punches_employees1_idx");
+                entity.HasIndex(e => e.PuUserId, "FK_punches_aspnetusers");
 
                 entity.HasIndex(e => e.PuTypeId, "fk_punches_punch_type1_idx");
 
                 entity.Property(e => e.PuId).HasColumnName("pu_id");
 
-                entity.Property(e => e.EmployeesEmpId).HasColumnName("employees_emp_id");
-
                 entity.Property(e => e.PuTime)
-                    .HasColumnType("timestamp")
+                    .HasColumnType("datetime")
                     .HasColumnName("pu_time");
 
                 entity.Property(e => e.PuType)
@@ -306,11 +303,7 @@ namespace Office.DataLayer.Data
 
                 entity.Property(e => e.PuTypeId).HasColumnName("pu_type_id");
 
-                entity.HasOne(d => d.EmployeesEmp)
-                    .WithMany(p => p.Punches)
-                    .HasForeignKey(d => d.EmployeesEmpId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_punches_employees1");
+                entity.Property(e => e.PuUserId).HasColumnName("pu_user_id");
 
                 entity.HasOne(d => d.PuTypeNavigation)
                     .WithMany(p => p.Punches)

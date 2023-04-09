@@ -3,11 +3,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Mysqlx;
-using Office.DataLayer.Data;
+using Office.DataLayer.data;
 using OfficeModels.Responses;
 using OfficeModels.ViewModels;
 using OfficeRepositary.Interfaces;
 using OfficeServices.Email;
+using OfficeServices.Log;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +21,9 @@ namespace OfficeRepositary.Repositaries
 	public class AdminRepo : IAdminRepo
 	{
 		private readonly db_a9696f_officeContext _db;
-		private readonly ILogger<AdminRepo> _logger;
+		private readonly ILogService _logger;
 		private readonly IMailService _mailService;
-		public AdminRepo(db_a9696f_officeContext db, ILogger<AdminRepo> logger, IMailService mailService)
+		public AdminRepo(db_a9696f_officeContext db, ILogService logger, IMailService mailService)
 		{
 			_db = db;
 			_logger = logger;

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Office.DataLayer.Data
+namespace Office.DataLayer.data
 {
     public partial class Task
     {
