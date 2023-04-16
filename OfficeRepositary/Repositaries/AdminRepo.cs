@@ -30,13 +30,13 @@ namespace OfficeRepositary.Repositaries
 			_mailService = mailService;
 		}
 
-		public async Task<Response> AddDepartment(Department dep)
+		public async Task<Response> AddDepartment(AddDepartment dep)
 		{
 			try
 			{
 				Department newDep = new Department();
-				newDep.Name = dep.Name;
-				newDep.Description = dep.Description;
+				newDep.Name = dep.name;
+				newDep.Description = dep.description;
 				await _db.Departments.AddAsync(newDep);
 				return new Response { Message = "Department is successfully added" };
 			}
@@ -48,47 +48,48 @@ namespace OfficeRepositary.Repositaries
 
 
 		}
+		#region
+		//public async Task<Response> AddEmployee(NewEmployee user)
+		//{
+		//	string GeneratePassword()
+		//	{
+		//		Random random = new Random();
+		//		string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+		//		string password = "";
+		//		for (int i = 0; i < 8; i++)
+		//		{
+		//			password += characters[random.Next(characters.Length)];
+		//		}
+		//		return password;
+		//	}
+		//	try
+		//	{
+		//		Employee employee = new Employee();
+		//		employee.EmpFirstName = user.firstName;
+		//		employee.EmpLastName = user.lastName;
+		//		employee.EmpEmail = user.email;
+		//		employee.EmpPassword = GeneratePassword();
+		//		employee.EmpDepId = user.department;
+		//		employee.EmpTypeId = user.type;
+		//		employee.HireDate = DateTime.Now.Date;
+		//		await _db.Employees.AddAsync(employee);
+		//		_db.SaveChanges();
+		//		await _mailService.SendMailAsync(user.email, "Officing Edge Credentials", $"Email: {user.email}\nPassword: {employee.EmpPassword}");
+		//		return new Response { Message = "Employee is successfully added" }; ;
 
-		public async Task<Response> AddEmployee(NewEmployee user)
-		{
-			string GeneratePassword()
-			{
-				Random random = new Random();
-				string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-				string password = "";
-				for (int i = 0; i < 8; i++)
-				{
-					password += characters[random.Next(characters.Length)];
-				}
-				return password;
-			}
-			try
-			{
-				Employee employee = new Employee();
-				employee.EmpFirstName = user.firstName;
-				employee.EmpLastName = user.lastName;
-				employee.EmpEmail = user.email;
-				employee.EmpPassword = GeneratePassword();
-				employee.EmpDepId = user.department;
-				employee.EmpTypeId = user.type;
-				employee.HireDate = DateTime.Now.Date;
-				await _db.Employees.AddAsync(employee);
-				_db.SaveChanges();
-				await _mailService.SendMailAsync(user.email, "Officing Edge Credentials", $"Email: {user.email}\nPassword: {employee.EmpPassword}");
-				return new Response { Message = "Employee is successfully added" }; ;
+		//	}
+		//	catch (Exception ex)
+		//	{
+		//		_logger.LogError($"Exception occured in AddEmployee Api\n{ex.Message}");
+		//		return new Response
+		//		{
+		//			StatusCode = System.Net.HttpStatusCode.BadRequest,
+		//			ErrorMessages = new List<string> { "Failed to send email", ex.Message.ToString() }
+		//		};
+		//	}
 
-			}
-			catch (Exception ex)
-			{
-				_logger.LogError($"Exception occured in AddEmployee Api\n{ex.Message}");
-				return new Response
-				{
-					StatusCode = System.Net.HttpStatusCode.BadRequest,
-					ErrorMessages = new List<string> { "Failed to send email", ex.Message.ToString() }
-				};
-			}
-
-		}
+		//}
+		#endregion
 		public async Task<DepartmentList> GetDepartmentList()
 		{
 			try
@@ -106,19 +107,22 @@ namespace OfficeRepositary.Repositaries
 			}
 
 		}
-		public async Task<IEnumerable<EmployeeType>> GetEmployeeTypesList()
-		{
-			try
-			{
-				return await _db.EmployeeTypes.ToListAsync();
-			}
-			catch (Exception ex)
-			{
-				_logger.LogError($"Exception occured in GetEmployeeTypesList Api\n{ex.Message}");
-				throw;
-			}
+		#region
+		//public async Task<IEnumerable<EmployeeType>> GetEmployeeTypesList()
+		//{
+		//	try
+		//	{
+		//		return await _db.EmployeeTypes.ToListAsync();
+		//	}
+		//	catch (Exception ex)
+		//	{
+		//		_logger.LogError($"Exception occured in GetEmployeeTypesList Api\n{ex.Message}");
+		//		throw;
+		//	}
 
-		}
+		//}
+		#endregion
+		#region
 		public async Task<Response> DeleteEmployee(int id)
 		{
 			try
@@ -144,10 +148,12 @@ namespace OfficeRepositary.Repositaries
 			}
 
 		}
-
-		public Task<Response> UpdateEmployee(int id)
-		{
-			return null;
-		}
+		#endregion
+		#region
+		//public Task<Response> UpdateEmployee(int id)
+		//{
+		//	return null;
+		//}
+		#endregion
 	}
 }

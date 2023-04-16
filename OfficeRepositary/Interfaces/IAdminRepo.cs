@@ -13,11 +13,11 @@ namespace OfficeRepositary.Interfaces
 {
 	public interface IAdminRepo
 	{
-		Task<Response> AddEmployee(NewEmployee user);
+		//Task<Response> AddEmployee(NewEmployee user);
 		Task<DepartmentList> GetDepartmentList();
-		Task<IEnumerable<EmployeeType>> GetEmployeeTypesList();
-		Task<Response> AddDepartment(Department dep);
-		Task<Response> DeleteEmployee(int id);
-		Task<Response> UpdateEmployee(int id);
+		//Task<IEnumerable<EmployeeType>> GetEmployeeTypesList();
+		Task<Response> AddDepartment(AddDepartment dep);
+		//Task<Response> DeleteEmployee(int id);
+		//Task<Response> UpdateEmployee(int id);
 	}
 }
